@@ -19,3 +19,7 @@ Clock rates (between 1 and 6 operations per second) are randomly generated at st
 ## Threads
 
 Each process runs a listening thread (which listens for messages on the sockets and then adds them to an internal queue) and a processing thread (which follows the message processing specification from the assignment description and then sleeps for `1/[clock rate]` seconds.
+
+## Synchronization
+
+The message queue must not allow simultaneous access from multiple threads.
