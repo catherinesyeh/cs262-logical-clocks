@@ -1,0 +1,6 @@
+{
+  "HOST": "localhost",
+  "PORT_1": 12345,
+  "PORT_2": 54321,
+  "PORT_3": 8080
+}
