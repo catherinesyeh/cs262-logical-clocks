@@ -18,19 +18,20 @@ class Machine:
         Initializes a virtual machine.
 
         :param id: ID of the machine
+        :param log_file_path: Path to log file for this experiment run
         :param host: Hostname of the machine
         :param port_map: Dictionary of port numbers for each machine
-        :param max_clock_rate: Maximum clock rate (default: 6)
-        :param max_event_num: Maximum number for determining events (default: 10)
-        :param log_file_path: Path to log file for this experiment run
+        :param max_clock_rate: Maximum clock rate in operations/second (default: 6)
+        :param max_event_num: Maximum number for determining what event to perform on each clock cycle (default: 10)
+        :param timeout: How long to run the machine before exiting, in seconds (default: 60)
         """
+
+        ## SET UP PROPERTIES
         self.id = id  # process number (1, 2, or 3)
         self.host = host  # hostname of the machine
         self.port_map = port_map  # dictionary of port numbers for each machine
         self.port = self.port_map[str(id)]  # port number for the machine
-
-        # choose a random clock rate between 1 and max_clock_rate
-        self.clock_rate = random.randint(1, max_clock_rate)
+        self.clock_rate = random.randint(1, max_clock_rate)  # choose a random clock rate between 1 and max_clock_rate
         self.logical_clock = 0  # initialize Lamport clock to 0
         self.max_event_num = max_event_num  # maximum number for determining events
 
@@ -48,13 +49,14 @@ class Machine:
 
         # Log initialization
         self.log_file_path = log_file_path
-        log_event(self.log_file_path, self.id, f"Initialized on {self.port} with clock rate {self.clock_rate}", self.queue.qsize(
-        ), self.logical_clock)
+        log_event(self.log_file_path, self.id, 
+            f"Initialized on {self.port} with clock rate {self.clock_rate}", self.queue.qsize(), self.logical_clock)
 
         # Connect to other machines
         self.connections = {}
         self.connect_to_machines()
 
+        self.run()
         timer = threading.Timer(timeout, self.stop)
         timer.start()
 
@@ -128,8 +130,7 @@ class Machine:
         received_clock = self.queue.get()  # get message from queue
         # update Lamport clock
         self.logical_clock = max(self.logical_clock, received_clock) + 1
-        log_event(self.log_file_path, self.id, f"Received message",
-                  queue_length, self.logical_clock)
+        log_event(self.log_file_path, self.id, f"Processed message", queue_length, self.logical_clock)
 
     def run(self):
         """
@@ -148,16 +149,16 @@ class Machine:
 
                 if event == 1:
                     # Send a message to the next machine
-                    recipient_id = str((self.id % 3) + 1)
+                    recipient_id = str((self.id + 1) % 3)
                     self.send_message(recipient_id)
                 elif event == 2:
                     # Send a message to the other machine
-                    recipient_id = str((self.id + 1) % 3 + 1)
+                    recipient_id = str((self.id + 2) % 3)
                     self.send_message(recipient_id)
                 elif event == 3:
                     # Send a message to both other machines
-                    recipient_id_1 = str((self.id % 3) + 1)
-                    recipient_id_2 = str((self.id + 1) % 3 + 1)
+                    recipient_id_1 = str((self.id + 1) % 3)
+                    recipient_id_2 = str((self.id + 2) % 3)
                     self.send_message(recipient_id_1)
                     self.send_message(recipient_id_2)
                 else:
@@ -195,5 +196,4 @@ if __name__ == '__main__':
     config_max_event_num = config["MAX_EVENT_NUM"]
     config_duration = config["EXPERIMENT_DURATION"]
     machine = Machine(int(sys.argv[1]), sys.argv[2], host, ports,
-                      config_max_clock_rate, config_max_event_num, config_duration)
-    machine.run()
+        config_max_clock_rate, config_max_event_num, config_duration)
