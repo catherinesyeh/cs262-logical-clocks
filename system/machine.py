@@ -100,7 +100,6 @@ class Machine:
         """
         # check if still running
         if not self.running:
-            print(f"ERROR: Machine {self.id} is not running")
             return
 
         # check if recipient id is valid
