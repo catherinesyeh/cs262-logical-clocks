@@ -33,8 +33,8 @@ All logged messages are prefixed with the process's number, taken from the comma
 - `Process ID`: corresponding to machine 1, 2, or 3
 - `Event Message`: message describing the event that occured
 - `System Time`: the global time taken from the system
-- `Logical Clock`: the time taken from this machine's logical clock
-- `Queue Length`: current length of this machine's message queue
+- `Logical Clock`: the time taken from this machine's logical clock (logged after update for current clock cycle)
+- `Queue Length`: current length of this machine's message queue (logged before processing a message)
 
 ## Clock Rate
 

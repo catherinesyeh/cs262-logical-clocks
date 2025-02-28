@@ -11,6 +11,7 @@ import json
 
 from logger import log_event
 
+
 class Machine:
     def __init__(self, id, log_file_path, host, port_map, max_clock_rate, max_event_num, timeout):
         """
@@ -38,7 +39,8 @@ class Machine:
         self.socket.bind((self.host, self.port))
 
         # Start listening thread
-        time.sleep(1) # Ensure all other processes have open sockets before trying to connect!
+        # Ensure all other processes have open sockets before trying to connect!
+        time.sleep(1)
         self.running = True  # flag to indicate if the machine is running
         self.thread = threading.Thread(
             target=self.listen_for_messages, daemon=True).start()
@@ -127,7 +129,7 @@ class Machine:
         # update Lamport clock
         self.logical_clock = max(self.logical_clock, received_clock) + 1
         log_event(self.log_file_path, self.id, f"Received message",
-                    queue_length, self.logical_clock)
+                  queue_length, self.logical_clock)
 
     def run(self):
         """
@@ -142,23 +144,26 @@ class Machine:
             else:
                 # Else, generate a random number between 1 to max_event_num to determine event
                 event = random.randint(1, self.max_event_num)
+                self.logical_clock += 1  # increment Lamport clock
+
                 if event == 1:
                     # Send a message to the next machine
                     recipient_id = str((self.id % 3) + 1)
-                    self.logical_clock += 1  # increment Lamport clock
                     self.send_message(recipient_id)
                 elif event == 2:
                     # Send a message to the other machine
                     recipient_id = str((self.id + 1) % 3 + 1)
-                    self.logical_clock += 1
                     self.send_message(recipient_id)
                 elif event == 3:
                     # Send a message to both other machines
                     recipient_id_1 = str((self.id % 3) + 1)
                     recipient_id_2 = str((self.id + 1) % 3 + 1)
-                    self.logical_clock += 1
                     self.send_message(recipient_id_1)
                     self.send_message(recipient_id_2)
+                else:
+                    # Log an internal event
+                    log_event(self.log_file_path, self.id, f"Internal event",
+                              self.queue.qsize(), self.logical_clock)
 
     def stop(self):
         """
@@ -173,9 +178,10 @@ class Machine:
         self.connections = {}
 
         log_event(self.log_file_path, self.id, f"Stopped",
-                    self.queue.qsize(), self.logical_clock)
+                  self.queue.qsize(), self.logical_clock)
 
         sys.exit(0)
+
 
 # Takes 2 command line arguments:
 # ID (1, 2, or 3)
@@ -188,5 +194,6 @@ if __name__ == '__main__':
     config_max_clock_rate = config["MAX_CLOCK_RATE"]
     config_max_event_num = config["MAX_EVENT_NUM"]
     config_duration = config["EXPERIMENT_DURATION"]
-    machine = Machine(int(sys.argv[1]), sys.argv[2], host, ports, config_max_clock_rate, config_max_event_num, config_duration)
+    machine = Machine(int(sys.argv[1]), sys.argv[2], host, ports,
+                      config_max_clock_rate, config_max_event_num, config_duration)
     machine.run()
