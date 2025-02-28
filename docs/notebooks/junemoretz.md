@@ -1,1 +1,9 @@
 # Engineering Notebook - June Moretz
+
+## February 28, 2025
+
+I discussed this assignment after class on Wednesday with Catherine, and started writing up some notes on how it should work. My Wednesdays and Thursdays are quite busy, so today is the first day I've had a chance to work on this - Catherine has put together a lot of the base of the system already. As it was written, the separate "machines" in the system were being created as threads from a root process, rather than independent system-level processes. I started by rewriting this to make the machines logically distinct processes on the operating system level, ensuring that we are following the assignment specification properly, and updated the root coordinator process to start the machines as subprocesses.
+
+I also rewrote the coordinator to simplify it, using just the numbers from the configuration rather than modifying them on the fly to run multiple experiments with different values for the maximum clock rate and maximum event number (the random number generated on each clock cycle to determine what action to perform). The coordinator will now just run a number of runs for a single experiment, with values fixed by the config file.
+
+I identified an issue where the machines would start trying to listen before other machines had opened their sockets in some cases, and added a wait after opening sockets before connecting to other machines, preventing this race condition.

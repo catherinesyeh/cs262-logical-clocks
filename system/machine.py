@@ -38,6 +38,7 @@ class Machine:
         self.socket.bind((self.host, self.port))
 
         # Start listening thread
+        time.sleep(1) # Ensure all other processes have open sockets before trying to connect!
         self.running = True  # flag to indicate if the machine is running
         self.thread = threading.Thread(
             target=self.listen_for_messages, daemon=True).start()
