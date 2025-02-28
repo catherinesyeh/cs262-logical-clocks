@@ -12,7 +12,7 @@ LOG_PATTERN = re.compile(
 )
 
 
-def plot_statistics(summary_df, folder):
+def plot_statistics(summary_df):
     """
     Plots the statistics for each process.
 
@@ -20,37 +20,37 @@ def plot_statistics(summary_df, folder):
     :param folder: Name of the experiment
     """
     # Create figure folder if it doesn't exist
-    os.makedirs(f"figures/{folder}", exist_ok=True)
+    os.makedirs(f"figures", exist_ok=True)
 
     # Plot min, mean, and max drift for each process and show the plot
     summary_df[["Min Drift", "Mean Drift", "Max Drift"]].plot(
-        kind="line", title=f"[{folder}] Drift vs. Clock Rate", xlabel="Clock Rate", ylabel="Drift (seconds)")
+        kind="line", title=f"Drift vs. Clock Rate", xlabel="Clock Rate", ylabel="Drift (seconds)")
     # Save the plot to a file
-    plt.savefig(f"figures/{folder}/drift.png")
+    plt.savefig(f"figures/drift.png")
 
     # Plot mean, max logical clock jump for each process and show the plot
     summary_df[["Mean Logical Clock Jump", "Max Logical Clock Jump"]].plot(
-        kind="line", title=f"[{folder}] Logical Clock Jump vs. Clock Rate", xlabel="Clock Rate", ylabel="Logical Clock Jump")
+        kind="line", title=f"Logical Clock Jump vs. Clock Rate", xlabel="Clock Rate", ylabel="Logical Clock Jump")
     # Save the plot to a file
-    plt.savefig(f"figures/{folder}/logical_clock_jump.png")
+    plt.savefig(f"figures/logical_clock_jump.png")
 
     # Plot mean, max queue length for each process and show the plot
     summary_df[["Mean Queue Length", "Max Queue Length"]].plot(
-        kind="line", title=f"[{folder}] Queue Length vs. Clock Rate", xlabel="Clock Rate", ylabel="Queue Length")
+        kind="line", title=f"Queue Length vs. Clock Rate", xlabel="Clock Rate", ylabel="Queue Length")
     # Save the plot to a file
-    plt.savefig(f"figures/{folder}/queue_length.png")
+    plt.savefig(f"figures/queue_length.png")
 
     # Plot mean, max queue length change for each process and show the plot
     summary_df[["Mean Queue Length Change", "Max Queue Length Change"]].plot(
-        kind="line", title=f"[{folder}] Queue Length Change vs. Clock Rate", xlabel="Clock Rate", ylabel="Queue Length Change")
+        kind="line", title=f"Queue Length Change vs. Clock Rate", xlabel="Clock Rate", ylabel="Queue Length Change")
     # Save the plot to a file
-    plt.savefig(f"figures/{folder}/queue_length_change.png")
+    plt.savefig(f"figures/queue_length_change.png")
 
     # Plot sent and received events as a percentage of total events for each process and show the plot
-    summary_df[["Sent Events", "Received Events"]].div(summary_df["Total Events"], axis=0).plot(
-        kind="bar", stacked=True, title=f"[{folder}] Event Distribution vs. Clock Rate", xlabel="Clock Rate", ylabel="% of Events")
+    summary_df[["Sent Events", "Received Events", "Internal Events"]].div(summary_df["Total Events"], axis=0).plot(
+        kind="bar", stacked=True, title=f"Event Distribution vs. Clock Rate", xlabel="Clock Rate", ylabel="% of Events")
     # Save the plot to a file
-    plt.savefig(f"figures/{folder}/events.png")
+    plt.savefig(f"figures/events.png")
 
 
 def compute_statistics(df):
@@ -98,6 +98,10 @@ def compute_statistics(df):
     received_events = group.apply(lambda x: x["Event"].str.contains(
         "Received").sum(), include_groups=False)
 
+    # Calculate total number of Internal events
+    internal_events = group.apply(lambda x: x["Event"].str.contains(
+        "Internal").sum(), include_groups=False)
+
     # Calculate total number of events for each process
     total_events = group.size()
 
@@ -114,6 +118,7 @@ def compute_statistics(df):
         "Max Queue Length Change": max_queue_length_change,
         "Sent Events": sent_events,
         "Received Events": received_events,
+        "Internal Events": internal_events,
         "Total Events": total_events
     })
 
@@ -130,8 +135,8 @@ def parse_log_files(folder_path):
     data = []
 
     # Loop through each run_x folder inside the experiment folder
-    for run_folder in sorted(os.listdir(f"{LOG_DIR}/{folder_path}")):
-        run_path = os.path.join(LOG_DIR, folder_path, run_folder)
+    for run_folder in sorted(os.listdir(f"{folder_path}")):
+        run_path = os.path.join(folder_path, run_folder)
 
         # ensure run_path is a directory
         if not os.path.isdir(run_path):
@@ -202,18 +207,10 @@ def parse_log_files(folder_path):
 
 
 def main():
-    # Get list of experiment folders
-    experiment_folders = sorted(os.listdir(LOG_DIR))
-
-    # Create figure folder if it doesn't exist
-    os.makedirs("figures", exist_ok=True)
-
-    # Loop through each experiment folder
-    for folder in experiment_folders:
-        print(f"Experiment: {folder}")
-        df = parse_log_files(folder)
-        summary_df = compute_statistics(df)
-        plot_statistics(summary_df, folder)
+    # Process all log files in the logs directory
+    df = parse_log_files(LOG_DIR)
+    summary_df = compute_statistics(df)
+    plot_statistics(summary_df)
 
     print("Analysis complete.")
 
