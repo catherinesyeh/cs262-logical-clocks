@@ -175,12 +175,8 @@ def parse_log_files(folder_path):
                             elapsed_time = (
                                 system_time - start_time).total_seconds()
 
-                            # calculate drift
-                            logical_clock = int(logical_clock)
-                            drift = elapsed_time - \
-                                logical_clock / clock_rate
-
                             # calculate jump in logical clock
+                            logical_clock = int(logical_clock)
                             logical_clock_jump = logical_clock - last_logical_clock
                             last_logical_clock = logical_clock
 
@@ -196,14 +192,17 @@ def parse_log_files(folder_path):
                                 "System Time": system_time,
                                 "Elapsed Seconds": elapsed_time,
                                 "Logical Clock": logical_clock,
-                                "Drift": drift,
                                 "Logical Clock Jump": logical_clock_jump,
                                 "Queue Length": queue_length,
                                 "Queue Length Change": queue_length_change,
                                 "Clock Rate": clock_rate
-
                             })
-    return pd.DataFrame(data)
+    
+    # Calculate drift
+    df = pd.DataFrame(data)
+    df["Max Clock"] = df.groupby(["Run", "System Time"])["Logical Clock"].transform('max')
+    df["Drift"] = df["Max Clock"] - df["Logical Clock"]
+    return df
 
 
 def main():

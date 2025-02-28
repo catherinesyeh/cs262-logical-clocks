@@ -5,9 +5,9 @@
 All our distributed system + experiment code is located in the [system/](../system/) folder.
 
 - [system/main.py](../system/main.py): Main program for running experiments with virtual machines.
-  - This will run multiple experiments, each of which instantiate 3 virtual machines and log events for a set duration.
-  - `NUM_RUNS_PER_EXP`, the number of runs per experiment configuration (default: 5), and `EXPERIMENT_DURATION`, how long each experiment lasts in seconds (default: 60), are adjustable parameters in this file.
-- [system/machine.py](../system/machine.py): Contains VirtualMachine class that initiates one machine in our distributed system.
+  - This will run multiple experiments, each of which instantiate 3 subprocesses and log events for a set duration.
+  - `NUM_RUNS_PER_EXP`, the number of runs per experiment configuration (default: 5) is an adjustable parameter in this file.
+- [system/machine.py](../system/machine.py): Runs one machine in our distributed system.
 - [system/logging.py](../system/logger.py): Contains helper functions to log events while the virtual machines are running.
 - [system/analyze_logs.py](../system/analyze_logs.py): Computes + visualizes statistics from event logs to compare drift, jumps in logical clock steps, and message queue lengths across different experiment confirmations.
   - Figures will be saved in the [system/figures/](../system/figures/) folder, in experiment-specific subfolders.
@@ -22,11 +22,7 @@ Each message is a 4-byte integer containing the sending process's logical clock 
 
 ## Logging
 
-Log files are written to a [system/logs/](../system/logs/) folder. A subfolder is created for each new experiment, with a subfolder insde that corresponding to each run with one `.log` file per machine.
-
-- For example, the log folder for Experiment 1 will be organized as follows:
-
-<img src="log_files.png" alt="Log file directory organization" width="400">
+Log files are written to a [system/logs/](../system/logs/) folder. A subfolder is created for each run, with one `.log` file per machine.
 
 All logged messages are prefixed with the process's number, taken from the command line argument passed at startup, e.g. `1> [log message]`. Each message contains the following information:
 
