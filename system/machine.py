@@ -146,18 +146,22 @@ class Machine:
                 event = random.randint(1, self.max_event_num)
                 self.logical_clock += 1  # increment Lamport clock
 
+                # Lookup tables for determining next and previous machine
+                next = [None, "2", "3", "1"]
+                prev = [None, "3", "1", "2"]
+
                 if event == 1:
                     # Send a message to the next machine
-                    recipient_id = str((self.id + 1) % 3)
+                    recipient_id = next[int(self.id)]
                     self.send_message(recipient_id)
                 elif event == 2:
                     # Send a message to the other machine
-                    recipient_id = str((self.id + 2) % 3)
+                    recipient_id = prev[int(self.id)]
                     self.send_message(recipient_id)
                 elif event == 3:
                     # Send a message to both other machines
-                    recipient_id_1 = str((self.id + 1) % 3)
-                    recipient_id_2 = str((self.id + 2) % 3)
+                    recipient_id_1 = next[int(self.id)]
+                    recipient_id_2 = prev[int(self.id)]
                     self.send_message(recipient_id_1)
                     self.send_message(recipient_id_2)
                 else:
