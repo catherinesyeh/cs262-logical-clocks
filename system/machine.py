@@ -9,7 +9,7 @@ from logger import log_event
 
 
 class VirtualMachine:
-    def __init__(self, id, host, port_map, max_clock_rate, max_event_num, run_id):
+    def __init__(self, id, host, port_map, max_clock_rate, max_event_num, log_file_path):
         """
         Initializes a virtual machine.
 
@@ -18,7 +18,7 @@ class VirtualMachine:
         :param port_map: Dictionary of port numbers for each machine
         :param max_clock_rate: Maximum clock rate (default: 6)
         :param max_event_num: Maximum number for determining events (default: 10)
-        :param run_id: ID of the run (for logging)
+        :param log_file_path: Path to log file for this experiment run
         """
         self.id = id  # process number (1, 2, or 3)
         self.host = host  # hostname of the machine
@@ -41,8 +41,8 @@ class VirtualMachine:
         self.queue = queue.Queue()  # Thread-safe queue to hold incoming messages
 
         # Log initialization
-        self.run_id = run_id
-        log_event(self.run_id, self.id, f"Initialized on {self.port} with clock rate {self.clock_rate}", self.queue.qsize(
+        self.log_file_path = log_file_path
+        log_event(self.log_file_path, self.id, f"Initialized on {self.port} with clock rate {self.clock_rate}", self.queue.qsize(
         ), self.logical_clock)
 
         # Connect to other machines
@@ -76,7 +76,7 @@ class VirtualMachine:
                         socket.AF_INET, socket.SOCK_DGRAM)
                     s.connect((self.host, port))
                     self.connections[machine_id] = s
-                    log_event(self.run_id, self.id, f"Connected to machine {machine_id} on port {port}", self.queue.qsize(
+                    log_event(self.log_file_path, self.id, f"Connected to machine {machine_id} on port {port}", self.queue.qsize(
                     ), self.logical_clock)
                 except Exception as e:
                     print(f"ERROR: Can't connect to machine {machine_id}: {e}")
@@ -102,7 +102,7 @@ class VirtualMachine:
         # send message to recipient
         try:
             self.connections[recipient_id].sendall(message)
-            log_event(self.run_id, self.id, f"Sent message to machine {recipient_id}", self.queue.qsize(
+            log_event(self.log_file_path, self.id, f"Sent message to machine {recipient_id}", self.queue.qsize(
             ), self.logical_clock)
         except Exception as e:
             print(f"ERROR: Can't send message to machine {recipient_id}: {e}")
@@ -119,7 +119,7 @@ class VirtualMachine:
         received_clock = self.queue.get()  # get message from queue
         # update Lamport clock
         self.logical_clock = max(self.logical_clock, received_clock) + 1
-        log_event(self.run_id, self.id, f"Received message",
+        log_event(self.log_file_path, self.id, f"Received message",
                   queue_length, self.logical_clock)
 
     def run(self):
@@ -165,5 +165,5 @@ class VirtualMachine:
         # empty self.connections
         self.connections = {}
 
-        log_event(self.run_id, self.id, f"Stopped",
+        log_event(self.log_file_path, self.id, f"Stopped",
                   self.queue.qsize(), self.logical_clock)

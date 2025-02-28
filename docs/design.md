@@ -6,7 +6,7 @@ All our distributed system + experiment code is located in the [system/](../syst
 
 - [system/main.py](../system/main.py): Main program for running experiments with virtual machines.
   - This will run multiple experiments, each of which instantiate 3 virtual machines and log events for a set duration.
-  - `NUM_EXPERIMENTS` and `EXPERIMENT_DURATION` are adjustable parameters in this file.
+  - `NUM_RUNS_PER_EXP`, the number of runs per experiment configuration (default: 5), and `EXPERIMENT_DURATION`, how long each experiment lasts in seconds (default: 60), are adjustable parameters in this file.
 - [system/machine.py](../system/machine.py): Contains VirtualMachine class that initiates one machine in our distributed system.
 - [system/logging.py](../system/logger.py): Contains helper functions to log events while the virtual machines are running.
 
@@ -20,11 +20,13 @@ Each message is a 4-byte integer containing the sending process's logical clock 
 
 ## Logging
 
-All logged messages are prefixed with the process's number, taken from the command line argument passed at startup, e.g. `1> [log message]`
+Log files are written to a [system/logs/](../system/logs/) folder. A subfolder is created for each new experiment, with a subfolder insde that corresponding to each run with one `.log` file per machine.
 
-Log files are written to a [system/logs/](../system/logs/) folder. A subfolder is created for each new run, with one `.log` file per machine.
+- For example, the log folder for Experiment 1 will be organized as follows:
 
-Each logged event contains the following information:
+<img src="log_files.png" alt="Log file directory organization" width="400">
+
+All logged messages are prefixed with the process's number, taken from the command line argument passed at startup, e.g. `1> [log message]`. Each message contains the following information:
 
 - `Process ID`: corresponding to machine 1, 2, or 3
 - `Event Message`: message describing the event that occured
