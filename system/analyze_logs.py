@@ -12,11 +12,12 @@ LOG_PATTERN = re.compile(
 )
 
 
-def plot_statistics(summary_df):
+def plot_statistics(summary_df, drift_df):
     """
     Plots the statistics for each process.
 
     :param summary_df: DataFrame containing the computed statistics
+    :param drift_df: DataFrame containing the drift data
     :param folder: Name of the experiment
     """
     # Create figure folder if it doesn't exist
@@ -24,9 +25,23 @@ def plot_statistics(summary_df):
 
     # Plot min, mean, and max drift for each process and show the plot
     summary_df[["Min Drift", "Mean Drift", "Max Drift"]].plot(
-        kind="line", title=f"Drift vs. Clock Rate", xlabel="Clock Rate", ylabel="Drift (seconds)")
+        kind="line", title=f"Drift vs. Clock Rate", xlabel="Clock Rate", ylabel="Drift")
     # Save the plot to a file
-    plt.savefig(f"figures/drift.png")
+    plt.savefig(f"figures/drift_by_clock_rate.png")
+
+    plt.figure()
+    # Plot max drift over time and show the plot
+    for clock_rate, group in drift_df.groupby("Clock Rate"):
+        plt.plot(group["Elapsed Seconds"], group["Drift"], label=clock_rate)
+    plt.legend(title="Clock Rate")
+    plt.title("Max Drift Over Time by Clock Rate")
+    plt.xlabel("Elapsed Time (s)")
+    plt.ylabel("Drift")
+    # Make sure x axis and y axis start at 0
+    plt.xlim(left=0)
+    plt.ylim(bottom=0)
+    # Save the plot to a file
+    plt.savefig(f"figures/drift_over_time.png")
 
     # Plot mean, max logical clock jump for each process and show the plot
     summary_df[["Mean Logical Clock Jump", "Max Logical Clock Jump"]].plot(
@@ -46,8 +61,8 @@ def plot_statistics(summary_df):
     # Save the plot to a file
     plt.savefig(f"figures/queue_length_change.png")
 
-    # Plot sent and received events as a percentage of total events for each process and show the plot
-    summary_df[["Sent Events", "Received Events", "Internal Events"]].div(summary_df["Total Events"], axis=0).plot(
+    # Plot sent, processed, and internal events as a percentage of total events for each process and show the plot
+    summary_df[["Sent Events", "Processed Events", "Internal Events"]].div(summary_df["Total Events"], axis=0).plot(
         kind="bar", stacked=True, title=f"Event Distribution vs. Clock Rate", xlabel="Clock Rate", ylabel="% of Events")
     # Save the plot to a file
     plt.savefig(f"figures/events.png")
@@ -58,10 +73,13 @@ def compute_statistics(df):
     Computes statistics from the log data.
 
     :param df: DataFrame containing the log data
-    :return: DataFrame containing the computed statistics
+    :return: DataFrame containing the computed statistics and DataFrame containing drift data
     """
     # Group by process ID
     group = df.groupby(["Clock Rate"])
+
+    # Group by elapsed seconds
+    group_elapsed = df.groupby(["Clock Rate", "Elapsed Seconds"])
 
     # Calculate min drift for each process
     min_drift = group["Drift"].min()
@@ -71,6 +89,9 @@ def compute_statistics(df):
 
     # Calculate max drift for each process
     max_drift = group["Drift"].max()
+
+    # Calculate max drift over time for each process
+    drift_df = group_elapsed["Drift"].max().reset_index()
 
     # Calculate mean logical clock jump for each process
     mean_logical_clock_jump = group["Logical Clock Jump"].mean()
@@ -94,9 +115,9 @@ def compute_statistics(df):
     sent_events = group.apply(lambda x: x["Event"].str.contains(
         "Sent").sum(), include_groups=False)
 
-    # Calculate total number of Received events
-    received_events = group.apply(lambda x: x["Event"].str.contains(
-        "Received").sum(), include_groups=False)
+    # Calculate total number of processed events
+    processed_events = group.apply(lambda x: x["Event"].str.contains(
+        "Processed").sum(), include_groups=False)
 
     # Calculate total number of Internal events
     internal_events = group.apply(lambda x: x["Event"].str.contains(
@@ -117,12 +138,12 @@ def compute_statistics(df):
         "Mean Queue Length Change": mean_queue_length_change,
         "Max Queue Length Change": max_queue_length_change,
         "Sent Events": sent_events,
-        "Received Events": received_events,
+        "Processed Events": processed_events,
         "Internal Events": internal_events,
         "Total Events": total_events
     })
 
-    return summary_df
+    return summary_df, drift_df
 
 
 def parse_log_files(folder_path):
@@ -197,10 +218,11 @@ def parse_log_files(folder_path):
                                 "Queue Length Change": queue_length_change,
                                 "Clock Rate": clock_rate
                             })
-    
+
     # Calculate drift
     df = pd.DataFrame(data)
-    df["Max Clock"] = df.groupby(["Run", "System Time"])["Logical Clock"].transform('max')
+    df["Max Clock"] = df.groupby(["Run", "System Time"])[
+        "Logical Clock"].transform('max')
     df["Drift"] = df["Max Clock"] - df["Logical Clock"]
     return df
 
@@ -208,8 +230,8 @@ def parse_log_files(folder_path):
 def main():
     # Process all log files in the logs directory
     df = parse_log_files(LOG_DIR)
-    summary_df = compute_statistics(df)
-    plot_statistics(summary_df)
+    summary_df, drift_df = compute_statistics(df)
+    plot_statistics(summary_df, drift_df)
 
     print("Analysis complete.")
 
