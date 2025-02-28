@@ -56,9 +56,10 @@ class Machine:
         self.connections = {}
         self.connect_to_machines()
 
-        self.run()
         timer = threading.Timer(timeout, self.stop)
         timer.start()
+
+        self.run()
 
     def listen_for_messages(self):
         """
