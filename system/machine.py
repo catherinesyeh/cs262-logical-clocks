@@ -1,15 +1,18 @@
+#!/usr/bin/env python3
+
 import time
 import random
 import socket
 import threading
 import struct
 import queue
+import sys
+import json
 
 from logger import log_event
 
-
-class VirtualMachine:
-    def __init__(self, id, host, port_map, max_clock_rate, max_event_num, log_file_path):
+class Machine:
+    def __init__(self, id, log_file_path, host, port_map, max_clock_rate, max_event_num, timeout):
         """
         Initializes a virtual machine.
 
@@ -48,6 +51,9 @@ class VirtualMachine:
         # Connect to other machines
         self.connections = {}
         self.connect_to_machines()
+
+        timer = threading.Timer(timeout, self.stop)
+        timer.start()
 
     def listen_for_messages(self):
         """
@@ -120,7 +126,7 @@ class VirtualMachine:
         # update Lamport clock
         self.logical_clock = max(self.logical_clock, received_clock) + 1
         log_event(self.log_file_path, self.id, f"Received message",
-                  queue_length, self.logical_clock)
+                    queue_length, self.logical_clock)
 
     def run(self):
         """
@@ -166,4 +172,20 @@ class VirtualMachine:
         self.connections = {}
 
         log_event(self.log_file_path, self.id, f"Stopped",
-                  self.queue.qsize(), self.logical_clock)
+                    self.queue.qsize(), self.logical_clock)
+
+        sys.exit(0)
+
+# Takes 2 command line arguments:
+# ID (1, 2, or 3)
+# Log file path
+if __name__ == '__main__':
+    with open("../config.json") as f:
+        config = json.load(f)
+    host = config["HOST"]
+    ports = config["PORTS"]
+    config_max_clock_rate = config["MAX_CLOCK_RATE"]
+    config_max_event_num = config["MAX_EVENT_NUM"]
+    config_duration = config["EXPERIMENT_DURATION"]
+    machine = Machine(int(sys.argv[1]), sys.argv[2], host, ports, config_max_clock_rate, config_max_event_num, config_duration)
+    machine.run()

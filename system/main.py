@@ -4,12 +4,9 @@ import textwrap
 import threading
 import time
 import shutil
+import subprocess
 
-from machine import VirtualMachine
-
-EXPERIMENT_DURATION = 60  # how long each experiment will last, in seconds
 NUM_RUNS_PER_EXP = 5  # how many experiments will be run with each configuration
-
 
 def set_up_exp_folder(exp_id, max_clock_rate, max_event_num):
     """
@@ -57,30 +54,9 @@ def perform_experiment_run(exp_id, run_id, host, port_map, max_clock_rate, max_e
     print(f"\tStarting run {run_id}...")
     log_file_path = f"exp_{exp_id}/run_{run_id}"
 
-    threads = []
-    machines = []
-    num_threads = len(port_map)
-    for i in range(num_threads):
-        # Start a virtual machine
-        vm = VirtualMachine(i + 1, host, port_map,
-                            max_clock_rate, max_event_num, log_file_path)
-        # Start a thread for each machine
-        thread = threading.Thread(
-            target=vm.run, daemon=True
-        )
-        threads.append(thread)
-        machines.append(vm)
-        thread.start()
-
-    # Let experiment run for EXPERIMENT_DURATION seconds
-    time.sleep(EXPERIMENT_DURATION)
-
-    # Stop all machines
-    for machine in machines:
-        machine.stop()
-
-    for thread in threads:
-        thread.join()  # Keep the main thread alive until all threads are done
+    procs = [ subprocess.Popen(['./machine.py', str(i + 1), log_file_path]) for i in range(3) ]
+    for p in procs:
+        p.wait()
 
     print(
         f"\tRun {run_id} complete. Log files are stored in logs/exp_{exp_id}/run_{run_id}.")
