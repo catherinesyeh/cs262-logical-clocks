@@ -8,6 +8,11 @@ This project is a model of a small, asynchronous distributed system with multipl
 
 1. Duplicate [config_example.json](config_example.json) and rename to `config.json`.
    - Fill in your configuration details.
+2. Install the python dependencies (this requires `poetry` to be installed):
+
+```
+poetry install
+```
 
 ## Run Experiments
 
@@ -20,7 +25,7 @@ cd system
 2. Run [main.py](system/main.py):
 
 ```
-python main.py
+poetry run python main.py
 ```
 
 ## Documentation
