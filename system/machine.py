@@ -26,15 +26,16 @@ class Machine:
         :param timeout: How long to run the machine before exiting, in seconds (default: 60)
         """
 
-        ## SET UP PROPERTIES
+        # SET UP PROPERTIES
         self.id = id  # process number (1, 2, or 3)
         self.host = host  # hostname of the machine
         self.port_map = port_map  # dictionary of port numbers for each machine
         self.port = self.port_map[str(id)]  # port number for the machine
-        self.clock_rate = random.randint(1, max_clock_rate)  # choose a random clock rate between 1 and max_clock_rate
+        # choose a random clock rate between 1 and max_clock_rate
+        self.clock_rate = random.randint(1, max_clock_rate)
         self.logical_clock = 0  # initialize Lamport clock to 0
         self.max_event_num = max_event_num  # maximum number for determining events
-        self.timeout = timeout # number of seconds to run for
+        self.timeout = timeout  # number of seconds to run for
 
         # Create a socket to send messages
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -50,8 +51,8 @@ class Machine:
 
         # Log initialization
         self.log_file_path = log_file_path
-        log_event(self.log_file_path, self.id, 
-            f"Initialized on {self.port} with clock rate {self.clock_rate}", self.queue.qsize(), self.logical_clock)
+        log_event(self.log_file_path, self.id,
+                  f"Initialized on {self.port} with clock rate {self.clock_rate}", self.queue.qsize(), self.logical_clock)
 
         # Connect to other machines
         self.connections = {}
@@ -64,6 +65,9 @@ class Machine:
         while self.running:
             try:
                 # listen for 4 byte messages
+                if self.socket.fileno() == -1:
+                    # Check if the socket is still valid
+                    return
                 data, _ = self.socket.recvfrom(4)
                 message = struct.unpack('i', data)[0]
                 self.queue.put(message)
@@ -126,7 +130,8 @@ class Machine:
         received_clock = self.queue.get()  # get message from queue
         # update Lamport clock
         self.logical_clock = max(self.logical_clock, received_clock) + 1
-        log_event(self.log_file_path, self.id, f"Processed message", queue_length, self.logical_clock)
+        log_event(self.log_file_path, self.id, f"Processed message",
+                  queue_length, self.logical_clock)
 
     def run(self):
         """
@@ -161,7 +166,7 @@ class Machine:
             else:
                 # Log an internal event
                 log_event(self.log_file_path, self.id, f"Internal event",
-                            self.queue.qsize(), self.logical_clock)
+                          self.queue.qsize(), self.logical_clock)
 
     def start(self):
         timer = threading.Timer(self.timeout, self.stop)
@@ -175,6 +180,7 @@ class Machine:
         """
         Stops the virtual machine.
         """
+        print("Stopping machine...")
         self.running = False
         self.socket.close()
         for connection in self.connections.values():
@@ -201,5 +207,5 @@ if __name__ == '__main__':
     config_max_event_num = config["MAX_EVENT_NUM"]
     config_duration = config["EXPERIMENT_DURATION"]
     machine = Machine(int(sys.argv[1]), sys.argv[2], host, ports,
-        config_max_clock_rate, config_max_event_num, config_duration)
+                      config_max_clock_rate, config_max_event_num, config_duration)
     machine.start()
