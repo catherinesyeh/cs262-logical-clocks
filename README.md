@@ -28,6 +28,8 @@ cd system
 poetry run python main.py
 ```
 
+Note: our [logs](system/logs/) and [figures](system/figures/) from running experiments are also located in this folder.
+
 ## Documentation
 
 More comprehensive internal documentation (including engineering notebooks with our log analysis & observations) is in the [docs/](docs/) folder.
