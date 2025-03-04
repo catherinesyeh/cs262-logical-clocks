@@ -34,6 +34,7 @@ class Machine:
         self.clock_rate = random.randint(1, max_clock_rate)  # choose a random clock rate between 1 and max_clock_rate
         self.logical_clock = 0  # initialize Lamport clock to 0
         self.max_event_num = max_event_num  # maximum number for determining events
+        self.timeout = timeout # number of seconds to run for
 
         # Create a socket to send messages
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -55,11 +56,6 @@ class Machine:
         # Connect to other machines
         self.connections = {}
         self.connect_to_machines()
-
-        timer = threading.Timer(timeout, self.stop)
-        timer.start()
-
-        self.run()
 
     def listen_for_messages(self):
         """
@@ -136,39 +132,44 @@ class Machine:
         """
         Main loop to run the virtual machine.
         """
+        if not self.queue.empty():
+            # If there are messages in the queue, process one
+            self.process_message()
+        else:
+            # Else, generate a random number between 1 to max_event_num to determine event
+            event = random.randint(1, self.max_event_num)
+            self.logical_clock += 1  # increment Lamport clock
+
+            # Lookup tables for determining next and previous machine
+            next = [None, "2", "3", "1"]
+            prev = [None, "3", "1", "2"]
+
+            if event == 1:
+                # Send a message to the next machine
+                recipient_id = next[int(self.id)]
+                self.send_message(recipient_id)
+            elif event == 2:
+                # Send a message to the other machine
+                recipient_id = prev[int(self.id)]
+                self.send_message(recipient_id)
+            elif event == 3:
+                # Send a message to both other machines
+                recipient_id_1 = next[int(self.id)]
+                recipient_id_2 = prev[int(self.id)]
+                self.send_message(recipient_id_1)
+                self.send_message(recipient_id_2)
+            else:
+                # Log an internal event
+                log_event(self.log_file_path, self.id, f"Internal event",
+                            self.queue.qsize(), self.logical_clock)
+
+    def start(self):
+        timer = threading.Timer(self.timeout, self.stop)
+        timer.start()
+
         while self.running:
             time.sleep(1 / self.clock_rate)  # simulate clock rate
-
-            if not self.queue.empty():
-                # If there are messages in the queue, process one
-                self.process_message()
-            else:
-                # Else, generate a random number between 1 to max_event_num to determine event
-                event = random.randint(1, self.max_event_num)
-                self.logical_clock += 1  # increment Lamport clock
-
-                # Lookup tables for determining next and previous machine
-                next = [None, "2", "3", "1"]
-                prev = [None, "3", "1", "2"]
-
-                if event == 1:
-                    # Send a message to the next machine
-                    recipient_id = next[int(self.id)]
-                    self.send_message(recipient_id)
-                elif event == 2:
-                    # Send a message to the other machine
-                    recipient_id = prev[int(self.id)]
-                    self.send_message(recipient_id)
-                elif event == 3:
-                    # Send a message to both other machines
-                    recipient_id_1 = next[int(self.id)]
-                    recipient_id_2 = prev[int(self.id)]
-                    self.send_message(recipient_id_1)
-                    self.send_message(recipient_id_2)
-                else:
-                    # Log an internal event
-                    log_event(self.log_file_path, self.id, f"Internal event",
-                              self.queue.qsize(), self.logical_clock)
+            self.run()
 
     def stop(self):
         """
@@ -201,3 +202,4 @@ if __name__ == '__main__':
     config_duration = config["EXPERIMENT_DURATION"]
     machine = Machine(int(sys.argv[1]), sys.argv[2], host, ports,
         config_max_clock_rate, config_max_event_num, config_duration)
+    machine.start()

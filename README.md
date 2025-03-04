@@ -35,3 +35,17 @@ Note: our [logs](system/logs/) and [figures](system/figures/) from running exper
 More comprehensive internal documentation (including engineering notebooks with our log analysis & observations) is in the [docs/](docs/) folder.
 
 - Our implementation design notes are located in [docs/design.md](docs/design.md).
+
+## Testing
+
+1. Navigate into [system/](system/) folder:
+
+```
+cd system
+```
+
+2. Start tests:
+
+```
+poetry run pytest
+```
