@@ -9,8 +9,9 @@ All our distributed system + experiment code is located in the [system/](../syst
   - `NUM_RUNS_PER_EXP`, the number of runs per experiment configuration (default: 5) is an adjustable parameter in this file.
 - [system/machine.py](../system/machine.py): Runs one machine in our distributed system.
 - [system/logging.py](../system/logger.py): Contains helper functions to log events while the virtual machines are running.
+  - Logs will be saved in the [system/logs/](../system/logs/) folder.
 - [system/analyze_logs.py](../system/analyze_logs.py): Computes + visualizes statistics from event logs to compare drift, jumps in logical clock steps, and message queue lengths across different experiment confirmations.
-  - Figures will be saved in the [system/figures/](../system/figures/) folder, in experiment-specific subfolders.
+  - Figures will be saved in the [system/figures/](../system/figures/) folder.
 
 ## Sockets
 

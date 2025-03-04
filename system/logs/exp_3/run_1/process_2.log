@@ -1,0 +1,266 @@
+2> Event: Initialized on 54321 with clock rate 4 | System Time: 2025-02-28 19:03:43 | Logical Clock: 0 | Queue Length: 0
+2> Event: Connected to machine 1 on port 12345 | System Time: 2025-02-28 19:03:43 | Logical Clock: 0 | Queue Length: 0
+2> Event: Connected to machine 3 on port 8080 | System Time: 2025-02-28 19:03:43 | Logical Clock: 0 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:43 | Logical Clock: 2 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:43 | Logical Clock: 3 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:44 | Logical Clock: 4 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:03:44 | Logical Clock: 5 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:03:44 | Logical Clock: 6 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:03:45 | Logical Clock: 7 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:45 | Logical Clock: 10 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:45 | Logical Clock: 12 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:45 | Logical Clock: 13 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:46 | Logical Clock: 15 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:46 | Logical Clock: 16 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:46 | Logical Clock: 16 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:46 | Logical Clock: 17 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:46 | Logical Clock: 17 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:46 | Logical Clock: 18 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:47 | Logical Clock: 20 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:47 | Logical Clock: 22 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:47 | Logical Clock: 23 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:03:47 | Logical Clock: 24 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:48 | Logical Clock: 27 | Queue Length: 1
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:48 | Logical Clock: 28 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:48 | Logical Clock: 29 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:48 | Logical Clock: 30 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:49 | Logical Clock: 34 | Queue Length: 1
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:49 | Logical Clock: 35 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:49 | Logical Clock: 38 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:03:49 | Logical Clock: 39 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:50 | Logical Clock: 40 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:50 | Logical Clock: 41 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:50 | Logical Clock: 41 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:50 | Logical Clock: 42 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:50 | Logical Clock: 42 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:03:50 | Logical Clock: 43 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:51 | Logical Clock: 44 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:03:51 | Logical Clock: 45 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:51 | Logical Clock: 50 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:51 | Logical Clock: 51 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:52 | Logical Clock: 52 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:52 | Logical Clock: 53 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:52 | Logical Clock: 55 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:52 | Logical Clock: 56 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:52 | Logical Clock: 56 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:03:53 | Logical Clock: 57 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:03:53 | Logical Clock: 58 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:53 | Logical Clock: 59 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:53 | Logical Clock: 60 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:03:54 | Logical Clock: 61 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:54 | Logical Clock: 62 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:03:54 | Logical Clock: 63 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:54 | Logical Clock: 68 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:03:55 | Logical Clock: 69 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:55 | Logical Clock: 72 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:55 | Logical Clock: 73 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:56 | Logical Clock: 74 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:03:56 | Logical Clock: 75 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:56 | Logical Clock: 77 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:03:56 | Logical Clock: 78 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:57 | Logical Clock: 81 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:57 | Logical Clock: 82 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:57 | Logical Clock: 84 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:57 | Logical Clock: 85 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:58 | Logical Clock: 86 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:58 | Logical Clock: 87 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:03:58 | Logical Clock: 88 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:03:58 | Logical Clock: 88 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:03:58 | Logical Clock: 89 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:03:59 | Logical Clock: 92 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:59 | Logical Clock: 94 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:59 | Logical Clock: 95 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:03:59 | Logical Clock: 96 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:00 | Logical Clock: 98 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:00 | Logical Clock: 99 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:00 | Logical Clock: 100 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:00 | Logical Clock: 101 | Queue Length: 3
+2> Event: Processed message | System Time: 2025-02-28 19:04:01 | Logical Clock: 102 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:01 | Logical Clock: 103 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:01 | Logical Clock: 105 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:01 | Logical Clock: 108 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:02 | Logical Clock: 109 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:02 | Logical Clock: 110 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:02 | Logical Clock: 111 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:02 | Logical Clock: 112 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:03 | Logical Clock: 113 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:03 | Logical Clock: 117 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:03 | Logical Clock: 118 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:03 | Logical Clock: 119 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:04 | Logical Clock: 120 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:04 | Logical Clock: 121 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:04 | Logical Clock: 124 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:04 | Logical Clock: 125 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:05 | Logical Clock: 127 | Queue Length: 1
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:05 | Logical Clock: 128 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:05 | Logical Clock: 129 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:05 | Logical Clock: 129 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:05 | Logical Clock: 130 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:06 | Logical Clock: 133 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:06 | Logical Clock: 134 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:06 | Logical Clock: 136 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:06 | Logical Clock: 137 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:07 | Logical Clock: 139 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:07 | Logical Clock: 141 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:07 | Logical Clock: 143 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:08 | Logical Clock: 144 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:08 | Logical Clock: 144 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:08 | Logical Clock: 145 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:08 | Logical Clock: 148 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:08 | Logical Clock: 149 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:09 | Logical Clock: 150 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:09 | Logical Clock: 152 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:09 | Logical Clock: 154 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:09 | Logical Clock: 155 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:10 | Logical Clock: 157 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:10 | Logical Clock: 158 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:10 | Logical Clock: 158 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:10 | Logical Clock: 161 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:10 | Logical Clock: 162 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:11 | Logical Clock: 163 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:11 | Logical Clock: 164 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:11 | Logical Clock: 165 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:11 | Logical Clock: 165 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:11 | Logical Clock: 166 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:11 | Logical Clock: 166 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:12 | Logical Clock: 170 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:12 | Logical Clock: 171 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:12 | Logical Clock: 172 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:12 | Logical Clock: 173 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:13 | Logical Clock: 174 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:13 | Logical Clock: 174 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:13 | Logical Clock: 175 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:13 | Logical Clock: 176 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:13 | Logical Clock: 176 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:13 | Logical Clock: 177 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:14 | Logical Clock: 181 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:14 | Logical Clock: 182 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:14 | Logical Clock: 185 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:14 | Logical Clock: 186 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:15 | Logical Clock: 187 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:15 | Logical Clock: 189 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:15 | Logical Clock: 190 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:15 | Logical Clock: 192 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:16 | Logical Clock: 193 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:16 | Logical Clock: 195 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:16 | Logical Clock: 196 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:16 | Logical Clock: 196 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:16 | Logical Clock: 197 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:16 | Logical Clock: 197 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:17 | Logical Clock: 198 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:17 | Logical Clock: 198 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:17 | Logical Clock: 202 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:17 | Logical Clock: 203 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:17 | Logical Clock: 203 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:17 | Logical Clock: 204 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:18 | Logical Clock: 205 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:18 | Logical Clock: 206 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:18 | Logical Clock: 210 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:19 | Logical Clock: 211 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:19 | Logical Clock: 213 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:19 | Logical Clock: 214 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:19 | Logical Clock: 215 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:20 | Logical Clock: 216 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:20 | Logical Clock: 217 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:20 | Logical Clock: 221 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:20 | Logical Clock: 222 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:21 | Logical Clock: 223 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:21 | Logical Clock: 224 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:21 | Logical Clock: 227 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:21 | Logical Clock: 228 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:22 | Logical Clock: 229 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:22 | Logical Clock: 230 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:22 | Logical Clock: 231 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:22 | Logical Clock: 233 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:23 | Logical Clock: 235 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:23 | Logical Clock: 236 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:23 | Logical Clock: 238 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:23 | Logical Clock: 239 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:24 | Logical Clock: 240 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:24 | Logical Clock: 241 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:24 | Logical Clock: 242 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:24 | Logical Clock: 242 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:24 | Logical Clock: 243 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:25 | Logical Clock: 244 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:25 | Logical Clock: 244 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:25 | Logical Clock: 249 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:25 | Logical Clock: 250 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:25 | Logical Clock: 251 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:26 | Logical Clock: 252 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:26 | Logical Clock: 253 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:26 | Logical Clock: 254 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:26 | Logical Clock: 258 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:27 | Logical Clock: 259 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:27 | Logical Clock: 260 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:27 | Logical Clock: 262 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:27 | Logical Clock: 263 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:28 | Logical Clock: 264 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:28 | Logical Clock: 265 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:28 | Logical Clock: 266 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:28 | Logical Clock: 269 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:29 | Logical Clock: 270 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:29 | Logical Clock: 272 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:29 | Logical Clock: 273 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:30 | Logical Clock: 275 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:30 | Logical Clock: 277 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:30 | Logical Clock: 278 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:30 | Logical Clock: 279 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:31 | Logical Clock: 280 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:31 | Logical Clock: 282 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:31 | Logical Clock: 283 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:31 | Logical Clock: 283 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:31 | Logical Clock: 284 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:32 | Logical Clock: 285 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:32 | Logical Clock: 289 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:32 | Logical Clock: 290 | Queue Length: 1
+2> Event: Internal event | System Time: 2025-02-28 19:04:32 | Logical Clock: 291 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:33 | Logical Clock: 293 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:33 | Logical Clock: 294 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:33 | Logical Clock: 295 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:33 | Logical Clock: 296 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:34 | Logical Clock: 297 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:34 | Logical Clock: 299 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:34 | Logical Clock: 301 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:34 | Logical Clock: 302 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:35 | Logical Clock: 303 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:35 | Logical Clock: 303 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:35 | Logical Clock: 304 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:35 | Logical Clock: 307 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:35 | Logical Clock: 308 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:36 | Logical Clock: 309 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:36 | Logical Clock: 311 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:36 | Logical Clock: 313 | Queue Length: 2
+2> Event: Processed message | System Time: 2025-02-28 19:04:36 | Logical Clock: 314 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:37 | Logical Clock: 317 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:37 | Logical Clock: 318 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:37 | Logical Clock: 319 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:37 | Logical Clock: 321 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:38 | Logical Clock: 322 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:38 | Logical Clock: 322 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:38 | Logical Clock: 323 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:38 | Logical Clock: 326 | Queue Length: 1
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:38 | Logical Clock: 327 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:39 | Logical Clock: 330 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:39 | Logical Clock: 331 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:39 | Logical Clock: 333 | Queue Length: 1
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:39 | Logical Clock: 334 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:40 | Logical Clock: 335 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:40 | Logical Clock: 338 | Queue Length: 1
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:40 | Logical Clock: 339 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:40 | Logical Clock: 339 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:41 | Logical Clock: 340 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:41 | Logical Clock: 340 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:41 | Logical Clock: 343 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:41 | Logical Clock: 344 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:41 | Logical Clock: 346 | Queue Length: 1
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:42 | Logical Clock: 347 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:42 | Logical Clock: 348 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:42 | Logical Clock: 348 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:42 | Logical Clock: 349 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:42 | Logical Clock: 349 | Queue Length: 0
+2> Event: Sent message to machine 3 | System Time: 2025-02-28 19:04:42 | Logical Clock: 350 | Queue Length: 0
+2> Event: Sent message to machine 1 | System Time: 2025-02-28 19:04:42 | Logical Clock: 350 | Queue Length: 0
+2> Event: Internal event | System Time: 2025-02-28 19:04:43 | Logical Clock: 351 | Queue Length: 0
+2> Event: Processed message | System Time: 2025-02-28 19:04:43 | Logical Clock: 355 | Queue Length: 1
+2> Event: Stopped | System Time: 2025-02-28 19:04:43 | Logical Clock: 355 | Queue Length: 1
+2> Event: Processed message | System Time: 2025-02-28 19:04:43 | Logical Clock: 357 | Queue Length: 1
