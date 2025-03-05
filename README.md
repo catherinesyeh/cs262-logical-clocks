@@ -38,10 +38,10 @@ More comprehensive internal documentation (including engineering notebooks with 
 
 ## Testing
 
-1. Navigate into [system/](system/) folder:
+1. Navigate into [system/tests/](system/tests/) folder:
 
 ```
-cd system
+cd system/tests
 ```
 
 2. Start tests:
